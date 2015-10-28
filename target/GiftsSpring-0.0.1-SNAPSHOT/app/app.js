@@ -3,6 +3,8 @@ var gifts = angular.module('gifts', ['ngRoute', 'ngResource']);
 
 gifts.config(function ($controllerProvider, $compileProvider, $filterProvider, $provide, $routeProvider) {
     
+	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+	
 	gifts.lazy = {
         controller: $controllerProvider.register,
        	directive: $compileProvider.directive,
@@ -20,6 +22,25 @@ gifts.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 					//'directives/dateAndTime.js',
 					'app/controllers/user/users_add_edit.js',
 					'app/services/user/user_factory.js',
+				], function () {
+					$rootScope.$apply(function () {
+						deferred.resolve();
+					}, function () {
+						console.log ('ERROR');
+					});
+				});
+				return deferred.promise;
+			}]
+		}
+	}).when('/login', {
+		templateUrl: 'app/templates/user/login.html',
+		resolve: {
+			load: ['$q', '$rootScope', function ($q, $rootScope) {
+				var deferred = $q.defer();
+				require([
+					//'directives/dateAndTime.js',
+					'app/controllers/user/login.js',
+					/*'app/services/user/user_factory.js',*/
 				], function () {
 					$rootScope.$apply(function () {
 						deferred.resolve();

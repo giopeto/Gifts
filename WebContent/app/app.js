@@ -2,8 +2,6 @@
 var gifts = angular.module('gifts', ['ngRoute', 'ngResource']);
 
 gifts.config(function ($controllerProvider, $compileProvider, $filterProvider, $provide, $routeProvider) {
-    
-	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 	
 	gifts.lazy = {
         controller: $controllerProvider.register,

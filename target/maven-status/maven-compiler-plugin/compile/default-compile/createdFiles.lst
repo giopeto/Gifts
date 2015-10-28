@@ -1,0 +1,5 @@
+com/gifts/users/repository/UsersRepository.class
+com/gifts/utility/MongoDBUtil.class
+com/gifts/user/service/UsersService.class
+com/gifts/user/controller/UsersController.class
+com/gifts/users/domain/User.class
